@@ -22,6 +22,7 @@ protected:
     virtual bool event(QEvent *event);
 
     void setCentralLayout(QLayout* layout);
+    void warn(const QString& msg);
 
 private:
     ToolItem* _tool;

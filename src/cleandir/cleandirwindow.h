@@ -28,6 +28,5 @@ private:
 
 private slots:
     void on_clean();
-    void on_thread_log();
     void on_thread_finished();
 };

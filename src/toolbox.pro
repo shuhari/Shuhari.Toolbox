@@ -16,6 +16,7 @@ SOURCES += main.cpp \
            config.cpp \
            cleandir/cleandirwindow.cpp \
            cleandir/cleandirconfig.cpp \
+           cleandir/cleandirthread.cpp \
            bookman/bookmanwindow.cpp \
            encdec/encdecwindow.cpp \
            renamer/renamerwindow.cpp \
@@ -32,6 +33,7 @@ HEADERS += app.h \
            config.h \
            cleandir/cleandirwindow.h \
            cleandir/cleandirconfig.h \
+           cleandir/cleandirthread.h \
            bookman/bookmanwindow.h \
            encdec/encdecwindow.h \
            renamer/renamerwindow.h \

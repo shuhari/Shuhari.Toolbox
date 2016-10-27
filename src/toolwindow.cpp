@@ -2,6 +2,7 @@
 #include "toolwindow.h"
 #include "toolitemmodel.h"
 #include "app.h"
+#include "resources.h"
 
 
 ToolWindow::ToolWindow()
@@ -71,4 +72,9 @@ void ToolWindow::setCentralLayout(QLayout *layout) {
     auto central = new QWidget();
     central->setLayout(layout);
     setCentralWidget(central);
+}
+
+
+void ToolWindow::warn(const QString &msg) {
+    QMessageBox::warning(this, strings::warning(), msg);
 }

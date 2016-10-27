@@ -3,6 +3,7 @@
 #include "resources.h"
 #include "app.h"
 #include "toolitemmodel.h"
+#include "cleandirthread.h"
 
 
 CleanDirWindow::CleanDirWindow()
@@ -25,7 +26,6 @@ void CleanDirWindow::createChildren() {
     hbox->addWidget(_cleanBtn);
 
     _logList = new LogList();
-    // TODO: setMaxCount(300)
 
     auto vbox = new QVBoxLayout();
     vbox->addLayout(hbox);
@@ -51,17 +51,29 @@ void CleanDirWindow::saveConfig() {
 
 
 void CleanDirWindow::on_clean() {
+    auto dir = _dirBtn->currentDirectory();
+    if (dir.isEmpty() || !QDir(dir).exists()) {
+        warn(strings::directory_invalid());
+        return;
+    }
 
-}
-
-
-void CleanDirWindow::on_thread_log() {
-
+    showRunning(true);
+    _logList->clear();
+    auto thread = new CleanDirThread(dir, this);
+    connect(thread, &CleanDirThread::finished, this, &CleanDirWindow::on_thread_finished);
+    connect(thread, &CleanDirThread::log, _logList, &LogList::log);
+    thread->start();
 }
 
 
 void CleanDirWindow::on_thread_finished() {
-
+    showRunning(false);
+    _logList->info(strings::process_finished());
 }
 
+
+void CleanDirWindow::showRunning(bool running) {
+    _dirBtn->setEnabled(!running);
+    _cleanBtn->setEnabled(!running);
+}
 

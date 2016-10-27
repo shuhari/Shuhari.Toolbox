@@ -8,10 +8,11 @@ class DirectoryButton : public QPushButton {
 public:
     DirectoryButton(QLineEdit* buddy, QWidget* parent = nullptr);
 
+    QString    currentDirectory();
+
 private:
     QLineEdit* _buddy;
 
-    QString    currentDirectory();
     void       setDirectory(const QString& dir);
 
 private slots:
