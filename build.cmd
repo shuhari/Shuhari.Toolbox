@@ -29,6 +29,7 @@ set NEXT_STEP=build
 goto clean
 
 :build
+ECHO build=%BUILD%
 cd build
 del /Q Makefile*.*
 del /Q uic_wrapper.bat

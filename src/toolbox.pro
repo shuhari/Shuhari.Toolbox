@@ -56,6 +56,7 @@ debug {
     UI_DIR = $$DESTDIR/debug/ui
 }
 release {
+    TARGET = toolbox
     MOC_DIR = $$DESTDIR/release/moc
     OBJECTS_DIR = $$DESTDIR/release/obj
     RCC_DIR = $$DESTDIR/release/rcc
