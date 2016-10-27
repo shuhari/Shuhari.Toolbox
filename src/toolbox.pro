@@ -4,20 +4,35 @@ TARGET = toolbox
 CONFIG += embed_manifest_exe
 DESTDIR = $$_PRO_FILE_PWD_/../build
 
-INCLUDEPATH += .
+INCLUDEPATH += . ./cleandir ./bookman ./encdec ./renamer ./servman
+
 SOURCES += main.cpp \
            app.cpp \
            mainwindow.cpp \
+           toolitemmodel.cpp \
+           toolwindow.cpp \
+           cleandir/cleandirwindow.cpp \
+           bookman/bookmanwindow.cpp \
+           encdec/encdecwindow.cpp \
+           renamer/renamerwindow.cpp \
+           servman/servmanwindow.cpp \
 
 HEADERS += app.h \
            precompiled.h \
            resources.h \
            mainwindow.h \
+           toolitemmodel.h \
+           toolwindow.h \
+           cleandir/cleandirwindow.h \
+           bookman/bookmanwindow.h \
+           encdec/encdecwindow.h \
+           renamer/renamerwindow.h \
+           servman/servmanwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc
 TRANSLATIONS += ../translations/toolbox.zh_CN.ts \
-# PRECOMPILED_HEADER = precompiled.h
+PRECOMPILED_HEADER = precompiled.h
 
 win32 {
     LIBS += libversion \
