@@ -11,6 +11,7 @@ SOURCES += main.cpp \
 
 HEADERS += app.h \
            precompiled.h \
+           resources.h \
            mainwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
@@ -23,6 +24,7 @@ win32 {
 }
 debug {
     TARGET = toolboxd
+    CONFIG += console
     MOC_DIR = $$DESTDIR/debug/moc
     OBJECTS_DIR = $$DESTDIR/debug/obj
     RCC_DIR = $$DESTDIR/debug/rcc

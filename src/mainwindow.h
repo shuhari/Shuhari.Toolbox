@@ -7,6 +7,6 @@ class MainWindow : public QWidget
 {
     Q_OBJECT
 public:
-    MainWidnow();
+    MainWindow();
 };
 
