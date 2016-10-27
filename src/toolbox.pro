@@ -11,7 +11,11 @@ SOURCES += main.cpp \
            mainwindow.cpp \
            toolitemmodel.cpp \
            toolwindow.cpp \
+           dirbutton.cpp \
+           loglist.cpp \
+           config.cpp \
            cleandir/cleandirwindow.cpp \
+           cleandir/cleandirconfig.cpp \
            bookman/bookmanwindow.cpp \
            encdec/encdecwindow.cpp \
            renamer/renamerwindow.cpp \
@@ -23,7 +27,11 @@ HEADERS += app.h \
            mainwindow.h \
            toolitemmodel.h \
            toolwindow.h \
+           dirbutton.h \
+           loglist.h \
+           config.h \
            cleandir/cleandirwindow.h \
+           cleandir/cleandirconfig.h \
            bookman/bookmanwindow.h \
            encdec/encdecwindow.h \
            renamer/renamerwindow.h \

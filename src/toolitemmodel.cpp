@@ -21,6 +21,7 @@ ToolWindow* ToolItem::window() {
     if (!_window) {
         _window = _factory();
         _window->setTool(this);
+        _window->initialize();
     }
     return _window;
 }

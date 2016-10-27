@@ -17,6 +17,31 @@ void ToolWindow::setTool(ToolItem *tool) {
 }
 
 
+void ToolWindow::initialize() {
+    // Restore geometry on activate
+    auto geometry = appSettings()->value(geometryKey()).toByteArray();
+    restoreGeometry(geometry);
+
+    createChildren();
+    loadConfig();
+}
+
+
+void ToolWindow::createChildren() {
+
+}
+
+
+void ToolWindow::loadConfig() {
+
+}
+
+
+void ToolWindow::saveConfig() {
+
+}
+
+
 QString ToolWindow::geometryKey() {
     if (_tool) {
         return QString("%1/geometry").arg(_tool->id());
@@ -26,17 +51,12 @@ QString ToolWindow::geometryKey() {
 
 
 bool ToolWindow::event(QEvent *event) {
-    if (event->type() == QEvent::WindowActivate) {
-        // Restore geometry on activate
-        if (_tool) {
-            auto geometry = appSettings()->value(geometryKey()).toByteArray();
-            restoreGeometry(geometry);
-        }
-    } else if (event->type() == QEvent::Close) {
+    if (event->type() == QEvent::Close) {
         // Hide on close, and save geometry
         if (_tool) {
             auto geometry = saveGeometry();
             appSettings()->setValue(geometryKey(), geometry);
+            saveConfig();
         }
         hide();
         event->ignore();
@@ -46,3 +66,9 @@ bool ToolWindow::event(QEvent *event) {
     return QMainWindow::event(event);
 }
 
+
+void ToolWindow::setCentralLayout(QLayout *layout) {
+    auto central = new QWidget();
+    central->setLayout(layout);
+    setCentralWidget(central);
+}

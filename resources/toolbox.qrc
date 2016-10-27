@@ -7,5 +7,6 @@
     <file alias="encode">encode.png</file>
     <file alias="rename">rename.png</file>
     <file alias="service">service.png</file>
+    <file alias="directory">directory.png</file>
   </qresource>
 </RCC>
