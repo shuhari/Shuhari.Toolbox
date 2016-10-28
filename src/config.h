@@ -14,6 +14,9 @@ public:
     inline QVariant value()        { return _value; }
     inline void setValue(QVariant value) { _value = value; }
 
+    inline QString stringValue()   { return _value.toString(); }
+    inline int     intValue()      { return _value.toInt(); }
+
 private:
     QString _key;
     QVariant _defaultValue;

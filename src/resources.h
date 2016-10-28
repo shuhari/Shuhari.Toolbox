@@ -6,6 +6,7 @@
 namespace strings {
     inline QString toolbox()          { return qApp->translate("", "Shuhari's toolbox"); }
     inline QString directory()        { return qApp->translate("", "Directory"); }
+    inline QString file()             { return qApp->translate("", "File"); }
     inline QString clean()            { return qApp->translate("", "Clean"); }
     inline QString copy()             { return qApp->translate("", "Copy"); }
     inline QString clear()            { return qApp->translate("", "Clear"); }
@@ -22,6 +23,24 @@ namespace strings {
     inline QString encode()           { return qApp->translate("", "Encode"); }
     inline QString decode()           { return qApp->translate("", "Decode"); }
     inline QString swap()             { return qApp->translate("", "Swap"); }
+    inline QString target()           { return qApp->translate("", "Target"); }
+    inline QString options()          { return qApp->translate("", "Options"); }
+    inline QString select()           { return qApp->translate("", "Select"); }
+    inline QString find()             { return qApp->translate("", "Find"); }
+    inline QString apply()            { return qApp->translate("", "Apply"); }
+    inline QString all()              { return qApp->translate("", "All"); }
+    inline QString none()             { return qApp->translate("", "None"); }
+    inline QString revert()           { return qApp->translate("", "Revert"); }
+
+    inline QString origin_text()      { return qApp->translate("", "Original text"); }
+    inline QString replace_with()     { return qApp->translate("", "Replace with"); }
+    inline QString fixed_string()     { return qApp->translate("", "Fixed string"); }
+    inline QString wildcard()         { return qApp->translate("", "Wildcard"); }
+    inline QString regex()            { return qApp->translate("", "Regular expressions"); }
+    inline QString recursive()        { return qApp->translate("", "Recursive"); }
+    inline QString decode_url()       { return qApp->translate("", "Decode url"); }
+    inline QString origin_name()      { return qApp->translate("", "Original name"); }
+    inline QString new_name()         { return qApp->translate("", "New name"); }
 
     inline QString cleandir_name()    { return qApp->translate("", "Directory Clean"); }
     inline QString cleandir_tooltip() { return qApp->translate("", "Cleaning directory"); }
@@ -50,5 +69,7 @@ namespace strings {
     inline QString decompress_failed()    { return qApp->translate("", "Decompress failed: %1"); }
     inline QString rename_success()   { return qApp->translate("", "Rename %1 => %2 OK"); }
     inline QString rename_failed()    { return qApp->translate("", "Rename %1 => %2 Failed"); }
+    inline QString rename_originText_invalid()   { return qApp->translate("", "Please input original text to replace"); }
+    inline QString rename_target_invalid() { return qApp->translate("", "Please select at least one targets (file or directory)."); }
 };
 

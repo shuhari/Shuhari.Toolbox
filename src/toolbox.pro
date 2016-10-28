@@ -25,6 +25,10 @@ SOURCES += main.cpp \
            encdec/encdecwindow.cpp \
            encdec/encoders.cpp \
            renamer/renamerwindow.cpp \
+           renamer/renameritem.cpp \
+           renamer/renamerconfig.cpp \
+           renamer/renamermodel.cpp \
+           renamer/findthread.cpp \
            servman/servmanwindow.cpp \
 
 HEADERS += precompiled.h \
@@ -47,6 +51,10 @@ HEADERS += precompiled.h \
            encdec/encdecwindow.h \
            encdec/encoders.h \
            renamer/renamerwindow.h \
+           renamer/renameritem.h \
+           renamer/renamerconfig.h \
+           renamer/renamermodel.h \
+           renamer/findthread.h \
            servman/servmanwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
