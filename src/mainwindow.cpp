@@ -6,6 +6,7 @@
 #include "encdecwindow.h"
 #include "renamerwindow.h"
 #include "servmanwindow.h"
+#include "common.h"
 
 
 MainWindow::MainWindow()
@@ -64,9 +65,8 @@ void MainWindow::loadItems() {
 
 
 void MainWindow::on_list_doubleClicked(const QModelIndex &index) {
-    int pointer = _list->model()->data(index, Qt::UserRole).toInt();
-    if (pointer) {
-        ToolItem* item = ToolItem::fromPointer(pointer);
+    auto item = (ToolItem*)varToPointer(_list->model()->data(index, Qt::UserRole));
+    if (item) {
         ToolWindow* window = item->window();
         qDebug() << "tool window" << window;
         window->show();

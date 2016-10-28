@@ -14,6 +14,14 @@ namespace strings {
     inline QString warning()          { return qApp->translate("", "Warning"); }
     inline QString error()            { return qApp->translate("", "Error"); }
     inline QString process()          { return qApp->translate("", "Process"); }
+    inline QString input()            { return qApp->translate("", "Input"); }
+    inline QString output()           { return qApp->translate("", "Output"); }
+    inline QString type()             { return qApp->translate("", "Type"); }
+    inline QString direction()        { return qApp->translate("", "Direction"); }
+    inline QString codec()            { return qApp->translate("", "Codec"); }
+    inline QString encode()           { return qApp->translate("", "Encode"); }
+    inline QString decode()           { return qApp->translate("", "Decode"); }
+    inline QString swap()             { return qApp->translate("", "Swap"); }
 
     inline QString cleandir_name()    { return qApp->translate("", "Directory Clean"); }
     inline QString cleandir_tooltip() { return qApp->translate("", "Cleaning directory"); }

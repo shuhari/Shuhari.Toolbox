@@ -39,3 +39,5 @@ CMakeLists.txt.user
 
 build/
 translations/*.qm
+src/=
+src/PRECOMPILED_HEADER

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "precompiled.h"
+#include "functional"
 
 
 class ToolWindow;
@@ -19,10 +20,6 @@ public:
     inline QString tooltip() { return _tooltip; }
     inline QIcon icon()      { return _icon; }
     ToolWindow* window();
-
-    // for QVariant storage
-    int toPointer();
-    static ToolItem* fromPointer(int value);
 
 private:
     QString _id;

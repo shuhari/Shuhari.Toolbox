@@ -7,5 +7,3 @@
 
 #include <windows.h>
 #include <winver.h>
-
-#include <functional>

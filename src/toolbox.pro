@@ -7,6 +7,7 @@ DESTDIR = $$_PRO_FILE_PWD_/../build
 INCLUDEPATH += . ./cleandir ./bookman ./encdec ./renamer ./servman
 
 SOURCES += main.cpp \
+           common.cpp \
            app.cpp \
            mainwindow.cpp \
            toolitemmodel.cpp \
@@ -22,11 +23,13 @@ SOURCES += main.cpp \
            bookman/processthread.cpp \
            bookman/rarcommand.cpp \
            encdec/encdecwindow.cpp \
+           encdec/encoders.cpp \
            renamer/renamerwindow.cpp \
            servman/servmanwindow.cpp \
 
-HEADERS += app.h \
-           precompiled.h \
+HEADERS += precompiled.h \
+           common.h \
+           app.h \
            resources.h \
            mainwindow.h \
            toolitemmodel.h \
@@ -42,13 +45,15 @@ HEADERS += app.h \
            bookman/processthread.h \
            bookman/rarcommand.h \
            encdec/encdecwindow.h \
+           encdec/encoders.h \
            renamer/renamerwindow.h \
            servman/servmanwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc
 TRANSLATIONS += ../translations/toolbox.zh_CN.ts \
-PRECOMPILED_HEADER = precompiled.h
+
+# PRECOMPILED_HEADER = precompiled.h
 
 win32 {
     LIBS += libversion \

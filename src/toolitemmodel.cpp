@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "toolitemmodel.h"
 #include "toolwindow.h"
+#include "common.h"
 
 
 ToolItem::ToolItem(const QString& id,
@@ -24,27 +25,6 @@ ToolWindow* ToolItem::window() {
         _window->initialize();
     }
     return _window;
-}
-
-
-union ToolItemUnion
-{
-    int       value;
-    ToolItem* pointer;
-};
-
-
-int ToolItem::toPointer() {
-    ToolItemUnion tiu;
-    tiu.pointer = this;
-    return tiu.value;
-}
-
-
-ToolItem* ToolItem::fromPointer(int value) {
-    ToolItemUnion tiu;
-    tiu.value = value;
-    return tiu.pointer;
 }
 
 
@@ -73,7 +53,7 @@ QVariant ToolItemModel::data(const QModelIndex &index, int role) const {
         case Qt::DisplayRole: return item->name();
         case Qt::DecorationRole: return item->icon();
         case Qt::ToolTipRole: return item->tooltip();
-        case Qt::UserRole: return item->toPointer();
+        case Qt::UserRole: return varFromPointer(item);
         }
     }
     return QVariant();
