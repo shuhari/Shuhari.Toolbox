@@ -47,16 +47,15 @@ PRECOMPILED_HEADER = precompiled.h
 win32 {
     LIBS += libversion \
 }
-debug {
+
+CONFIG(debug, debug|release) {
     TARGET = toolboxd
     CONFIG += console
     MOC_DIR = $$DESTDIR/debug/moc
     OBJECTS_DIR = $$DESTDIR/debug/obj
     RCC_DIR = $$DESTDIR/debug/rcc
     UI_DIR = $$DESTDIR/debug/ui
-}
-release {
-    TARGET = toolbox
+} else {
     MOC_DIR = $$DESTDIR/release/moc
     OBJECTS_DIR = $$DESTDIR/release/obj
     RCC_DIR = $$DESTDIR/release/rcc
