@@ -13,6 +13,7 @@ namespace strings {
     inline QString info()             { return qApp->translate("", "Information"); }
     inline QString warning()          { return qApp->translate("", "Warning"); }
     inline QString error()            { return qApp->translate("", "Error"); }
+    inline QString process()          { return qApp->translate("", "Process"); }
 
     inline QString cleandir_name()    { return qApp->translate("", "Directory Clean"); }
     inline QString cleandir_tooltip() { return qApp->translate("", "Cleaning directory"); }
@@ -37,5 +38,9 @@ namespace strings {
     inline QString delete_success()   { return qApp->translate("", "Delete file/directory [%1] success"); }
     inline QString delete_failed()    { return qApp->translate("", "Delete file/directory [%1] failed: %2"); }
     inline QString directory_invalid()    { return qApp->translate("", "Please select an existing directory"); }
+    inline QString decompress_success()   { return qApp->translate("", "Decompress file success: %1"); }
+    inline QString decompress_failed()    { return qApp->translate("", "Decompress failed: %1"); }
+    inline QString rename_success()   { return qApp->translate("", "Rename %1 => %2 OK"); }
+    inline QString rename_failed()    { return qApp->translate("", "Rename %1 => %2 Failed"); }
 };
 

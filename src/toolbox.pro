@@ -18,6 +18,9 @@ SOURCES += main.cpp \
            cleandir/cleandirconfig.cpp \
            cleandir/cleandirthread.cpp \
            bookman/bookmanwindow.cpp \
+           bookman/bookmanconfig.cpp \
+           bookman/processthread.cpp \
+           bookman/rarcommand.cpp \
            encdec/encdecwindow.cpp \
            renamer/renamerwindow.cpp \
            servman/servmanwindow.cpp \
@@ -35,6 +38,9 @@ HEADERS += app.h \
            cleandir/cleandirconfig.h \
            cleandir/cleandirthread.h \
            bookman/bookmanwindow.h \
+           bookman/bookmanconfig.h \
+           bookman/processthread.h \
+           bookman/rarcommand.h \
            encdec/encdecwindow.h \
            renamer/renamerwindow.h \
            servman/servmanwindow.h \
