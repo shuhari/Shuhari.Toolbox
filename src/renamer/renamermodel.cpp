@@ -37,6 +37,23 @@ void RenamerModel::add(RenamerItem *item) {
 }
 
 
+RenamerItem* RenamerModel::at(int index) {
+    Q_ASSERT(index >= 0 && index < _items.size());
+    return _items.at(index);
+}
+
+
+void RenamerModel::setState(int index, RenamerItem::State state) {
+    auto item = at(index);
+    item->setState(state);
+    QModelIndex startCell = this->index(index, 0);
+    QModelIndex endCell = this->index(index, columnCount() - 1);
+    QVector<int> roles;
+    roles << Qt::BackgroundColorRole;
+    emit dataChanged(startCell, endCell, roles);
+}
+
+
 int RenamerModel::rowCount(const QModelIndex &parent) const {
     return _items.size();
 }
@@ -63,6 +80,12 @@ QVariant RenamerModel::data(const QModelIndex &index, int role) const {
                 return qApp->style()->standardIcon(QStyle::SP_FileIcon);
             else
                 return qApp->style()->standardIcon(QStyle::SP_DirIcon);
+        }
+        else if (role == Qt::BackgroundColorRole) {
+            if (item->state() == RenamerItem::SuccessState)
+                return QColor(0, 0x80, 0);
+            else if (item->state() == RenamerItem::ErrorState)
+                return QColor(0xff, 0, 0);
         }
     }
     return QVariant();

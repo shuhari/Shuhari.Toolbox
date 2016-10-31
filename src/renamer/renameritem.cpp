@@ -3,7 +3,7 @@
 
 
 RenamerItem::RenamerItem() {
-
+    _state = PendingState;
 }
 
 
@@ -13,6 +13,7 @@ RenamerItem::RenamerItem(ItemType type, const QString &originName,
     _originName = originName;
     _newName = newName;
     _directory = directory;
+    _state = PendingState;
 }
 
 
@@ -32,4 +33,5 @@ void RenamerItem::copy(const RenamerItem &src) {
     _originName = src._originName;
     _newName = src._newName;
     _directory = src._directory;
+    _state = src._state;
 }

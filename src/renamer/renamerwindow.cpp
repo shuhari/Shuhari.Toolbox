@@ -241,5 +241,15 @@ void RenamerWindow::on_find_finished() {
 
 
 void RenamerWindow::on_apply() {
-
+    auto selModel = _table->selectionModel();
+    for (int i=0; i<_model->rowCount(); i++) {
+        auto item = _model->at(i);
+        if (selModel->isRowSelected(i, QModelIndex())) {
+            QDir dir(item->directory());
+            bool success = dir.rename(item->originName(), item->newName());
+            qDebug() << "renamer success" << success;
+            _model->setState(i, success ? RenamerItem::SuccessState : RenamerItem::ErrorState);
+        }
+    }
+    on_selectNone();
 }
