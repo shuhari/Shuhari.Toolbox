@@ -106,33 +106,62 @@ void ServiceManageWindow::createCentral() {
 
 
 void ServiceManageWindow::reloadServices() {
+    _table->setColumnWidth(0, 100);
+    _table->setColumnWidth(0, 100);
+    _table->setColumnWidth(1, 100);
+    _table->setColumnWidth(2, 200);
+    _table->setColumnWidth(3, 100);
+    _table->setColumnWidth(4, 100);
+    _table->setColumnWidth(5, 100);
+    _table->setColumnWidth(6, 100);
+    _table->verticalHeader()->hide();
 
+    _model->reload();
 }
 
 
 void ServiceManageWindow::on_refresh() {
-
+    reloadServices();
 }
 
 
 void ServiceManageWindow::on_searchEdit_textChanged() {
-
+    applyFilter();
 }
 
 void ServiceManageWindow::on_table_itemSelectionChanged() {
-
+    updateActionStatus();
 }
 
 void ServiceManageWindow::updateActionStatus() {
-
+    ServiceItem* item = selectedService();
+    if (item) {
+        _startTypeAutoAction->setChecked(item->startType() == SERVICE_AUTO_START);
+        _startTypeDemandAction->setChecked(item->startType() == SERVICE_DEMAND_START);
+        _startTypeDisabledAction->setChecked(item->startType() == SERVICE_DISABLED);
+    } else {
+        _startTypeAutoAction->setChecked(false);
+        _startTypeDemandAction->setChecked(false);
+        _startTypeDisabledAction->setChecked(false);
+    }
 }
 
-ServiceItem ServiceManageWindow::selectedService() {
-    return ServiceItem();
+ServiceItem* ServiceManageWindow::selectedService() {
+    /* TODO: table selection
+    if (_table->selectedIndexes().size() > 0) {
+        int row = _table->selectedIndexes()[0].row();
+        return _model->at(row);
+    }
+    return null;*/
 }
+
 
 void ServiceManageWindow::applyFilter() {
-
+    QString name = _searchEdit->text().trimmed();
+    for (int i=0; i<_model->rowCount(QModelIndex()); i++) {
+        bool visible = _model->at(i)->match(name);
+        _table->setRowHidden(i, !visible);
+    }
 }
 
 
@@ -151,7 +180,23 @@ void ServiceManageWindow::on_pause() {
 
 
 void ServiceManageWindow::on_startType() {
-
+    auto action = qobject_cast<QAction*>(sender());
+    if (action) {
+        DWORD startType = action->data().toInt();
+        auto item = selectedService();
+        if (item) {
+            QString errorMsg;
+            bool success = false; // TODO: item.setStartType(startType, errorMsg);
+            if (success)
+                reloadServices();
+            else
+                warn(strings::service_setStartType_failed()
+                     .arg(item->name())
+                     .arg(startType)
+                     .arg(errorMsg));
+            updateActionStatus();
+        }
+    }
 }
 
 

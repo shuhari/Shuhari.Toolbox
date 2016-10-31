@@ -22,7 +22,7 @@ private:
     void reloadServices();
     void applyFilter();
 
-    ServiceItem selectedService();
+    ServiceItem* selectedService();
     void updateActionStatus();
     QAction* createStartTypeAction(const QString& name, int type);
 

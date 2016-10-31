@@ -38,6 +38,12 @@ namespace strings {
     inline QString service_autoStart()    { return qApp->translate("", "Automatic"); }
     inline QString service_demandStart()  { return qApp->translate("", "Demand"); }
     inline QString service_disabled()     { return qApp->translate("", "Disabled"); }
+    inline QString name()             { return qApp->translate("", "Name"); }
+    inline QString displayName()      { return qApp->translate("", "Display name"); }
+    inline QString description()      { return qApp->translate("", "Description"); }
+    inline QString startType()        { return qApp->translate("", "Start Type"); }
+    inline QString status()           { return qApp->translate("", "Status"); }
+    inline QString loginAs()          { return qApp->translate("", "Login as"); }
 
     inline QString origin_text()      { return qApp->translate("", "Original text"); }
     inline QString replace_with()     { return qApp->translate("", "Replace with"); }
@@ -78,5 +84,6 @@ namespace strings {
     inline QString rename_failed()    { return qApp->translate("", "Rename %1 => %2 Failed"); }
     inline QString rename_originText_invalid()   { return qApp->translate("", "Please input original text to replace"); }
     inline QString rename_target_invalid() { return qApp->translate("", "Please select at least one targets (file or directory)."); }
+    inline QString service_setStartType_failed() { return qApp->translate("", "Set service [%1] start type to %2 failed: %3"); }
 };
 
