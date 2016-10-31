@@ -31,6 +31,13 @@ namespace strings {
     inline QString all()              { return qApp->translate("", "All"); }
     inline QString none()             { return qApp->translate("", "None"); }
     inline QString revert()           { return qApp->translate("", "Revert"); }
+    inline QString refresh()          { return qApp->translate("", "Refresh"); }
+    inline QString start()            { return qApp->translate("", "Start"); }
+    inline QString stop()             { return qApp->translate("", "Stop"); }
+    inline QString pause()            { return qApp->translate("", "Pause"); }
+    inline QString service_autoStart()    { return qApp->translate("", "Automatic"); }
+    inline QString service_demandStart()  { return qApp->translate("", "Demand"); }
+    inline QString service_disabled()     { return qApp->translate("", "Disabled"); }
 
     inline QString origin_text()      { return qApp->translate("", "Original text"); }
     inline QString replace_with()     { return qApp->translate("", "Replace with"); }
