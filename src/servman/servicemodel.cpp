@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "servicemodel.h"
 #include "resources.h"
+#include "servicecontext.h"
 
 
 #define COLUMN_COUNT         7
@@ -81,8 +82,12 @@ ServiceModel::~ServiceModel() {
 
 
 void ServiceModel::clear() {
-    qDeleteAll(_items);
-    _items.clear();
+    if (_items.size() > 0) {
+        beginRemoveRows(QModelIndex(), 0, _items.size() - 1);
+        qDeleteAll(_items);
+        _items.clear();
+        endRemoveRows();
+    }
 }
 
 
@@ -92,13 +97,84 @@ ServiceItem* ServiceModel::at(int row) {
 }
 
 
-void ServiceModel::reload() {
+void ServiceModel::setStartType(const QString &name, DWORD startType) {
+    for (int i=0; i<_items.size(); i++) {
+        if (_items[i]->name() == name) {
+            _items[i]->setStartType(startType);
+            QModelIndex startIndex = index(i, COLUMN_STARTTYPE);
+            QModelIndex endIndex = startIndex;
+            QVector<int> roles;
+            roles << Qt::DisplayRole;
+            dataChanged(startIndex, endIndex, roles);
+        }
+    }
+}
 
+
+bool ServiceModel::shouldInclude(ENUM_SERVICE_STATUS_PROCESS *pService) {
+    DWORD dwType = pService->ServiceStatusProcess.dwServiceType;
+    if ((dwType & SERVICE_WIN32) == 0)
+        return false;
+    return true;
+}
+
+
+void ServiceModel::reload() {
+    clear();
+
+    ServiceContext scmCtx;
+    if (!scmCtx.openManager(SC_MANAGER_ENUMERATE_SERVICE | GENERIC_READ))
+        return;
+
+    DWORD dwNeeded = 0, dwReturned = 0;
+    BOOL bRet = EnumServicesStatusEx(scmCtx.handle(),
+                                     SC_ENUM_PROCESS_INFO,
+                                     SERVICE_DRIVER | SERVICE_WIN32,
+                                     SERVICE_STATE_ALL,
+                                     NULL, 0,
+                                     &dwNeeded, &dwReturned,
+                                     NULL, NULL);
+    if (!bRet && GetLastError() == ERROR_MORE_DATA)
+    {
+        auto pService = (ENUM_SERVICE_STATUS_PROCESS*)scmCtx.alloc(dwNeeded);
+        auto pStart = pService;
+        bRet = EnumServicesStatusEx(scmCtx.handle(),
+                                    SC_ENUM_PROCESS_INFO,
+                                    SERVICE_DRIVER | SERVICE_WIN32,
+                                    SERVICE_STATE_ALL,
+                                    (PBYTE)pService, dwNeeded,
+                                    &dwNeeded, &dwReturned,
+                                    NULL, NULL);
+        if (bRet)
+        {
+            for (DWORD i = 0; i < dwReturned; i++)
+            {
+                if (shouldInclude(pService))
+                {
+                    ServiceContext serviceCtx;
+                    if (serviceCtx.openService(scmCtx.handle(),
+                                               pService->lpServiceName,
+                                               SERVICE_QUERY_CONFIG | SERVICE_QUERY_STATUS))
+                    {
+                        auto si = new ServiceItem();
+                        serviceCtx.read(pService, si);
+                        _items.append(si);
+                    }
+                }
+                pService ++;
+            }
+        }
+        scmCtx.free(pStart);
+    }
+    if (_items.size() > 0) {
+        beginInsertRows(QModelIndex(), 0, _items.size() - 1);
+        endInsertRows();
+    }
 }
 
 
 int ServiceModel::rowCount(const QModelIndex &) const {
-    return 0;
+    return _items.size();
 }
 
 
@@ -108,6 +184,25 @@ int ServiceModel::columnCount(const QModelIndex &parent) const {
 
 
 QVariant ServiceModel::data(const QModelIndex &index, int role) const {
+    int row = index.row();
+    if (row >= 0 && row < _items.size()) {
+        auto item = _items.at(row);
+        if (role == Qt::DisplayRole) {
+            switch (index.column()) {
+            case COLUMN_NAME: return item->name();
+            case COLUMN_DISPLAYNAME: return item->displayName();
+            case COLUMN_DESCRIPTON: return item->description();
+            case COLUMN_TYPE: return item->typeName();
+            case COLUMN_STARTTYPE: return item->startTypeName();
+            case COLUMN_STATUS: return item->statusName();
+            case COLUMN_LOGIN: return item->startName();
+            }
+        }
+        else if (role == Qt::DecorationRole && index.column() == 0) {
+        }
+        else if (role == Qt::BackgroundColorRole) {
+        }
+    }
     return QVariant();
 }
 

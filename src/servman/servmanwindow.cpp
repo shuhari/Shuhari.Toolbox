@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "servmanwindow.h"
 #include "resources.h"
+#include "servicecontext.h"
 
 
 ServiceManageWindow::ServiceManageWindow()
@@ -101,7 +102,7 @@ void ServiceManageWindow::createCentral() {
     hbox->addWidget(_detail);
     setCentralLayout(hbox);
 
-    // selectionChanged connect(_table, &QTableView::s)
+    connect(_table, &QTableView::clicked, this, &ServiceManageWindow::on_table_clicked);
 }
 
 
@@ -129,9 +130,11 @@ void ServiceManageWindow::on_searchEdit_textChanged() {
     applyFilter();
 }
 
-void ServiceManageWindow::on_table_itemSelectionChanged() {
+
+void ServiceManageWindow::on_table_clicked() {
     updateActionStatus();
 }
+
 
 void ServiceManageWindow::updateActionStatus() {
     ServiceItem* item = selectedService();
@@ -147,12 +150,13 @@ void ServiceManageWindow::updateActionStatus() {
 }
 
 ServiceItem* ServiceManageWindow::selectedService() {
-    /* TODO: table selection
-    if (_table->selectedIndexes().size() > 0) {
-        int row = _table->selectedIndexes()[0].row();
-        return _model->at(row);
+    int rowCount = _model->rowCount(QModelIndex());
+    auto selModel = _table->selectionModel();
+    for (int row=0; row<rowCount; row++) {
+        if (selModel->isRowSelected(row, QModelIndex()))
+            return _model->at(row);
     }
-    return null;*/
+    return nullptr;
 }
 
 
@@ -186,9 +190,10 @@ void ServiceManageWindow::on_startType() {
         auto item = selectedService();
         if (item) {
             QString errorMsg;
-            bool success = false; // TODO: item.setStartType(startType, errorMsg);
-            if (success)
-                reloadServices();
+            bool success = ServiceContext::changeStartType(item->name(), startType, errorMsg);
+            if (success) {
+                _model->setStartType(item->name(), startType);
+            }
             else
                 warn(strings::service_setStartType_failed()
                      .arg(item->name())

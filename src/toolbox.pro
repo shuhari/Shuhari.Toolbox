@@ -31,6 +31,7 @@ SOURCES += main.cpp \
            renamer/findthread.cpp \
            servman/servmanwindow.cpp \
            servman/servicemodel.cpp \
+           servman/servicecontext.cpp \
 
 HEADERS += precompiled.h \
            common.h \
@@ -58,6 +59,7 @@ HEADERS += precompiled.h \
            renamer/findthread.h \
            servman/servmanwindow.h \
            servman/servicemodel.h \
+           servman/servicecontext.h \
 
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc

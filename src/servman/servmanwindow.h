@@ -42,7 +42,7 @@ private:
 private slots:
     void on_refresh();
     void on_searchEdit_textChanged();
-    void on_table_itemSelectionChanged();
+    void on_table_clicked();
     void on_start();
     void on_stop();
     void on_pause();

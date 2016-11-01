@@ -12,13 +12,22 @@ public:
     inline const QString& description() { return _description; }
     inline const QString& startName()   { return _startName; }
 
+    inline void setType(DWORD type)       { _type = type; }
+    inline void setStartType(DWORD type)  { _startType = type; }
+    inline void setName(QString name) { _name = name; }
+    inline void setDisplayName(QString name) { _displayName = name; }
+    inline void setDescription(QString desc) { _description = desc; }
+    inline void setStartName(QString name)   { _startName = name; }
+    inline void setWaitHint(DWORD hint)      { _waitHint = hint; }
+    inline void setProcessId(DWORD id)       { _processId = id; }
+    inline void setFlags(DWORD flags)        { _flags = flags; }
+    inline void setState(DWORD state)        { _state = state; }
+    inline void setPathName(QString name)    { _pathName = name; }
+
     QString typeName();
     QString startTypeName();
     QString statusName();
     bool match(const QString& name);
-
-    // void load(ServiceContext& ctx, ENUM_SERVICE_STATUS_PROCESS* ssp);
-    // bool setStartType(DWORD startType, QString& errorMsg);
 
 private:
     QString _name;
@@ -50,7 +59,10 @@ public:
     void clear();
     ServiceItem* at(int row);
     void reload();
+    void setStartType(const QString& name, DWORD startType);
 
 private:
     QList<ServiceItem*> _items;
+
+    bool shouldInclude(ENUM_SERVICE_STATUS_PROCESS* pService);
 };

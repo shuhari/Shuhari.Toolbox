@@ -28,3 +28,5 @@ BEGIN
         VALUE "Translation", 0x804, 0x4E4
     END
 END
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "application.manifest"

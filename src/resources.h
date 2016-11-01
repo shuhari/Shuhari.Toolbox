@@ -80,10 +80,15 @@ namespace strings {
     inline QString directory_invalid()    { return qApp->translate("", "Please select an existing directory"); }
     inline QString decompress_success()   { return qApp->translate("", "Decompress file success: %1"); }
     inline QString decompress_failed()    { return qApp->translate("", "Decompress failed: %1"); }
+
     inline QString rename_success()   { return qApp->translate("", "Rename %1 => %2 OK"); }
     inline QString rename_failed()    { return qApp->translate("", "Rename %1 => %2 Failed"); }
     inline QString rename_originText_invalid()   { return qApp->translate("", "Please input original text to replace"); }
     inline QString rename_target_invalid() { return qApp->translate("", "Please select at least one targets (file or directory)."); }
+
     inline QString service_setStartType_failed() { return qApp->translate("", "Set service [%1] start type to %2 failed: %3"); }
+    inline QString service_openManager_failed()  { return qApp->translate("", "Failed to open service manager"); }
+    inline QString service_openService_failed()  { return qApp->translate("", "Failed to open service"); }
+    inline QString service_changeStartType_failed()  { return qApp->translate("", "Failed to change service start type"); }
 };
 
