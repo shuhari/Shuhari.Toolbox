@@ -9,16 +9,16 @@
 
 
 RenamerModel::RenamerModel(QObject *parent)
-    : QAbstractTableModel(parent) {
+    : BaseTableModel<RenamerItem>(parent) {
 }
 
 
-RenamerModel::~RenamerModel() {
+/*RenamerModel::~RenamerModel() {
     clear();
-}
+}*/
 
 
-void RenamerModel::clear() {
+/*void RenamerModel::clear() {
     int count = _items.size();
     if (count > 0) {
         beginRemoveRows(QModelIndex(), 0, count - 1);
@@ -26,21 +26,21 @@ void RenamerModel::clear() {
         _items.clear();
         endRemoveRows();
     }
-}
+}*/
 
 
-void RenamerModel::add(RenamerItem *item) {
+/*void RenamerModel::add(RenamerItem *item) {
     int index = _items.size();
     beginInsertRows(QModelIndex(), index, index);
     _items.append(item);
     endInsertRows();
-}
+}*/
 
 
-RenamerItem* RenamerModel::at(int index) {
+/*RenamerItem* RenamerModel::at(int index) {
     Q_ASSERT(index >= 0 && index < _items.size());
     return _items.at(index);
-}
+}*/
 
 
 void RenamerModel::setState(int index, RenamerItem::State state) {
@@ -54,20 +54,23 @@ void RenamerModel::setState(int index, RenamerItem::State state) {
 }
 
 
-int RenamerModel::rowCount(const QModelIndex &parent) const {
+/*int RenamerModel::rowCount(const QModelIndex &parent) const {
     return _items.size();
-}
+}*/
 
 
 int RenamerModel::columnCount(const QModelIndex &parent) const {
+    Q_UNUSED(parent);
     return COLUMN_COUNT;
 }
 
 
 QVariant RenamerModel::data(const QModelIndex &index, int role) const {
+    qDebug() << "data, row=" << index.row() << ", role=" << role << ", size=" << _items.size();
     int row = index.row();
     if (row >= 0 && row < _items.size()) {
         auto item = _items.at(row);
+        qDebug() << "item=" << item->originName();
         if (role == Qt::DisplayRole) {
             switch (index.column()) {
             case COLUMN_ORIGIN_NAME: return item->originName();

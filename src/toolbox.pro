@@ -43,6 +43,7 @@ HEADERS += precompiled.h \
            dirbutton.h \
            loglist.h \
            config.h \
+           basetablemodel.h \
            cleandir/cleandirwindow.h \
            cleandir/cleandirconfig.h \
            cleandir/cleandirthread.h \
