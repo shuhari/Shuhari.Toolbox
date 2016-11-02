@@ -1,6 +1,7 @@
 #pragma once
 
 #include "precompiled.h"
+#include "basetablemodel.h"
 
 
 class ServiceItem {
@@ -45,24 +46,18 @@ private:
 };
 
 
-class ServiceModel : public QAbstractTableModel {
+class ServiceModel : public BaseTableModel<ServiceItem> {
     Q_OBJECT
 public:
     ServiceModel(QObject* parent = nullptr);
-    virtual ~ServiceModel();
 
-    virtual int rowCount(const QModelIndex&) const;
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 
-    void clear();
-    ServiceItem* at(int row);
     void reload();
     void setStartType(const QString& name, DWORD startType);
 
 private:
-    QList<ServiceItem*> _items;
-
     bool shouldInclude(ENUM_SERVICE_STATUS_PROCESS* pService);
 };

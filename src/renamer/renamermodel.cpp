@@ -13,36 +13,6 @@ RenamerModel::RenamerModel(QObject *parent)
 }
 
 
-/*RenamerModel::~RenamerModel() {
-    clear();
-}*/
-
-
-/*void RenamerModel::clear() {
-    int count = _items.size();
-    if (count > 0) {
-        beginRemoveRows(QModelIndex(), 0, count - 1);
-        qDeleteAll(_items);
-        _items.clear();
-        endRemoveRows();
-    }
-}*/
-
-
-/*void RenamerModel::add(RenamerItem *item) {
-    int index = _items.size();
-    beginInsertRows(QModelIndex(), index, index);
-    _items.append(item);
-    endInsertRows();
-}*/
-
-
-/*RenamerItem* RenamerModel::at(int index) {
-    Q_ASSERT(index >= 0 && index < _items.size());
-    return _items.at(index);
-}*/
-
-
 void RenamerModel::setState(int index, RenamerItem::State state) {
     auto item = at(index);
     item->setState(state);
@@ -52,11 +22,6 @@ void RenamerModel::setState(int index, RenamerItem::State state) {
     roles << Qt::BackgroundColorRole;
     emit dataChanged(startCell, endCell, roles);
 }
-
-
-/*int RenamerModel::rowCount(const QModelIndex &parent) const {
-    return _items.size();
-}*/
 
 
 int RenamerModel::columnCount(const QModelIndex &parent) const {

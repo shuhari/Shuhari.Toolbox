@@ -28,15 +28,15 @@ bool ServiceItem::match(const QString &name) {
 QString ServiceItem::typeName()
 {
     if (_type == SERVICE_FILE_SYSTEM_DRIVER)
-        return qApp->translate("", "FS Driver");
+        return strings::service_type_fs();
     else if (_type == SERVICE_KERNEL_DRIVER)
-        return qApp->translate("", "Kernel Driver");
+        return strings::service_type_kernel();
     else if ((_type & SERVICE_WIN32_OWN_PROCESS) == SERVICE_WIN32_OWN_PROCESS)
-        return qApp->translate("", "Win32 Own Process");
+        return strings::service_type_win32own();
     else if ((_type & SERVICE_WIN32_SHARE_PROCESS) == SERVICE_WIN32_SHARE_PROCESS)
-        return qApp->translate("", "Win32 Share Process");
+        return strings::service_type_win32share();
     else
-        return qApp->translate("", "Unknown");
+        return strings::unknown();
 }
 
 
@@ -44,12 +44,12 @@ QString ServiceItem::startTypeName()
 {
     switch (_startType)
     {
-    case SERVICE_AUTO_START: return qApp->translate("", "Auto Start");
-    case SERVICE_BOOT_START: return qApp->translate("", "Boot Start");
-    case SERVICE_DEMAND_START: return qApp->translate("", "Demand Start");
-    case SERVICE_DISABLED: return qApp->translate("", "Disabled");
-    case SERVICE_SYSTEM_START: return qApp->translate("", "System Start");
-    default: return qApp->translate("", "Unknown");
+    case SERVICE_AUTO_START: return strings::service_startType_auto();
+    case SERVICE_BOOT_START: return strings::service_startType_boot();
+    case SERVICE_DEMAND_START: return strings::service_startType_demand();
+    case SERVICE_DISABLED: return strings::service_startType_disabled();
+    case SERVICE_SYSTEM_START: return strings::service_startType_sys();
+    default: return strings::unknown();
     }
 }
 
@@ -58,42 +58,21 @@ QString ServiceItem::statusName()
 {
     switch (_state)
     {
-    case SERVICE_CONTINUE_PENDING: return qApp->translate("", "Continue Pending");
-    case SERVICE_PAUSE_PENDING: return qApp->translate("", "Pause Pending");
-    case SERVICE_PAUSED: return qApp->translate("", "Paused");
-    case SERVICE_RUNNING: return qApp->translate("", "Running");
-    case SERVICE_START_PENDING: return qApp->translate("", "Start Pending");
-    case SERVICE_STOP_PENDING: return qApp->translate("", "Stop Pending");
-    case SERVICE_STOPPED: return qApp->translate("", "Stopped");
-    default: return qApp->translate("", "Unknown");
+    case SERVICE_CONTINUE_PENDING: return strings::service_state_continuePending();
+    case SERVICE_PAUSE_PENDING: return strings::service_state_pausePending();
+    case SERVICE_PAUSED: return strings::service_state_paused();
+    case SERVICE_RUNNING: return strings::service_state_running();
+    case SERVICE_START_PENDING: return strings::service_state_startPending();
+    case SERVICE_STOP_PENDING: return strings::service_state_stopped();
+    case SERVICE_STOPPED: return strings::service_state_stopped();
+    default: return strings::unknown();
     }
 }
 
 
 ServiceModel::ServiceModel(QObject *parent)
-    : QAbstractTableModel(parent) {
+    : BaseTableModel<ServiceItem>(parent) {
 
-}
-
-
-ServiceModel::~ServiceModel() {
-    clear();
-}
-
-
-void ServiceModel::clear() {
-    if (_items.size() > 0) {
-        beginRemoveRows(QModelIndex(), 0, _items.size() - 1);
-        qDeleteAll(_items);
-        _items.clear();
-        endRemoveRows();
-    }
-}
-
-
-ServiceItem* ServiceModel::at(int row) {
-    Q_ASSERT(row >= 0 && row < _items.size());
-    return _items[row];
 }
 
 
@@ -158,7 +137,7 @@ void ServiceModel::reload() {
                     {
                         auto si = new ServiceItem();
                         serviceCtx.read(pService, si);
-                        _items.append(si);
+                        add(si);
                     }
                 }
                 pService ++;
@@ -166,19 +145,11 @@ void ServiceModel::reload() {
         }
         scmCtx.free(pStart);
     }
-    if (_items.size() > 0) {
-        beginInsertRows(QModelIndex(), 0, _items.size() - 1);
-        endInsertRows();
-    }
-}
-
-
-int ServiceModel::rowCount(const QModelIndex &) const {
-    return _items.size();
 }
 
 
 int ServiceModel::columnCount(const QModelIndex &parent) const {
+    Q_UNUSED(parent);
     return COLUMN_COUNT;
 }
 
@@ -186,7 +157,7 @@ int ServiceModel::columnCount(const QModelIndex &parent) const {
 QVariant ServiceModel::data(const QModelIndex &index, int role) const {
     int row = index.row();
     if (row >= 0 && row < _items.size()) {
-        auto item = _items.at(row);
+        ServiceItem* item = at(row);
         if (role == Qt::DisplayRole) {
             switch (index.column()) {
             case COLUMN_NAME: return item->name();

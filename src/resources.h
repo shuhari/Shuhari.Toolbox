@@ -44,6 +44,7 @@ namespace strings {
     inline QString startType()        { return qApp->translate("", "Start Type"); }
     inline QString status()           { return qApp->translate("", "Status"); }
     inline QString loginAs()          { return qApp->translate("", "Login as"); }
+    inline QString unknown()          { return qApp->translate("", "Unknown"); }
 
     inline QString origin_text()      { return qApp->translate("", "Original text"); }
     inline QString replace_with()     { return qApp->translate("", "Replace with"); }
@@ -72,6 +73,25 @@ namespace strings {
 
     inline QString browse_text()      { return qApp->translate("", "Browse..."); }
     inline QString browse_title()     { return qApp->translate("", "Choose an existing directory"); }
+
+    inline QString service_type_fs()          { return qApp->translate("", "FS Driver"); }
+    inline QString service_type_kernel()      { return qApp->translate("", "Kernel Driver"); }
+    inline QString service_type_win32own()    { return qApp->translate("", "Win32 Own Process"); }
+    inline QString service_type_win32share()  { return qApp->translate("", "Win32 Share Process"); }
+
+    inline QString service_startType_auto()   { return qApp->translate("", "Auto Start"); }
+    inline QString service_startType_boot()   { return qApp->translate("", "Boot Start"); }
+    inline QString service_startType_demand() { return qApp->translate("", "Demand Start"); }
+    inline QString service_startType_disabled() { return qApp->translate("", "Disabled"); }
+    inline QString service_startType_sys()    { return qApp->translate("", "System Start"); }
+
+    inline QString service_state_continuePending() { return qApp->translate("", "Continue Pending"); }
+    inline QString service_state_paused()          { return qApp->translate("", "Paused"); }
+    inline QString service_state_pausePending()    { return qApp->translate("", "Pause Pending"); }
+    inline QString service_state_running()         { return qApp->translate("", "Running"); }
+    inline QString service_state_startPending()    { return qApp->translate("", "Start Pending"); }
+    inline QString service_state_stopPending()     { return qApp->translate("", "Stop Pending"); }
+    inline QString service_state_stopped()         { return qApp->translate("", "Stopped"); }
 
     inline QString processing_directory() { return qApp->translate("", "Processing directory: %1"); }
     inline QString process_finished() { return qApp->translate("", "Process finished"); }

@@ -11,7 +11,6 @@ public:
     }
 
     inline virtual ~BaseTableModel() {
-        qDebug() << " ~BaseTableModel()";
         clear();
     }
 
@@ -32,7 +31,7 @@ public:
         endInsertRows();
     }
 
-    inline T* at(int row) {
+    inline T* at(int row) const {
         Q_ASSERT(row >= 0 && row < _items.size());
         return _items.at(row);
     }
