@@ -2,5 +2,6 @@
 <RCC>
   <qresource>
     <file alias="toolbox">toolbox.ico</file>
+    <file alias="clean">clean.png</file>
   </qresource>
 </RCC>

@@ -9,13 +9,23 @@ INCLUDEPATH += .
 
 SOURCES += main.cpp \
            app.cpp \
+           shared/common.cpp \
+           shared/toolitem.cpp \
+           shared/toolmodel.cpp \
+           shared/toolwindow.cpp \
            center/centerwindow.cpp \
+           cleandir/cleandirwindow.cpp \
 
 HEADERS += precompiled.h \
            resources.h \
            app.h \
+           shared/common.h \
+           shared/toolitem.h \
+           shared/toolmodel.h \
+           shared/toolwindow.h \
            center/centerwindow.h \
-        
+           cleandir/cleandirwindow.h \
+
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc
 
