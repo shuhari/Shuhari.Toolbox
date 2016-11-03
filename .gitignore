@@ -1,6 +1,5 @@
-.idea/
-*.pyc
+*.pro.user
 build/
-dist/
 **/translations/*.qm
+
 

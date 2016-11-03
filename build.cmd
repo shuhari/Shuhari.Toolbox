@@ -2,68 +2,57 @@
 SET NEXT_STEP=
 SET BUILD=%2
 IF "%BUILD%" == "" (SET BUILD=debug)
-SET PYQTDIR=C:\Lan\Python35\Lib\site-packages\PyQt5\Qt\bin
 
-if "%1" == "codegen" goto codegen
-if "%1" == "clean" goto clean
+
+ECHO Initialize...
+if not exist build mkdir build
+if not exist build\translations mkdir build\translations
+
 if "%1" == "build" goto build
+if "%1" == "clean" goto clean
+if "%1" == "rebuild" goto rebuild
 if "%1" == "lupdate" goto lupdate
 if "%1" == "lrelease" goto lrelease
-if "%1" == "run" goto run
 goto help
 
-:codegen
-pyrcc5 -o src/qrc_resources.py resources/resources.qrc
-goto end
-
 :clean
-rmdir /S /Q build
-rmdir /S /Q dist
+del /S /Q build\*.*
+if exist build\debug rmdir /S /Q build\debug
+if exist build\release rmdir /S /Q build\release
 if "%NEXT_STEP%" == "build" goto build
 goto end
 
 :rebuild
-SET NEXT_STEP=build
+set NEXT_STEP=build
 goto clean
 
 :build
-REM --version-file FILE
-REM -m MANIFEST.XML
-REM --uac-admin
-SET COMMON_ARGS=-y -i resources/toolbox.ico
-IF "%BUILD%" == "debug" (
-    SET EXENAME=toolboxd
-    SET ARGS=%COMMON_ARGS% -n %EXENAME% -c
-) ELSE (
-    SET EXENAME=toolbox
-    SET ARGS=%COMMON_ARGS% -n %EXENAME% -w
-)
-PyInstaller %ARGS% src/main.py
-copy /Y %PYQTDIR%\Qt5Core.dll dist\%EXENAME%\
-copy /Y %PYQTDIR%\Qt5Gui.dll dist\%EXENAME%\
-copy /Y %PYQTDIR%\Qt5Widgets.dll dist\%EXENAME%\
-copy /Y %PYQTDIR%\Qt5WinExtras.dll dist\%EXENAME%\
+cd build
+del /Q Makefile*.*
+del /Q uic_wrapper.bat
+qmake ../src/toolbox.pro
+mingw32-make %BUILD%
+del /Q Makefile*.*
+del /Q uic_wrapper.bat
+cd ..
 goto end
 
 :lupdate
+lupdate src/toolbox.pro
 goto end
 
 :lrelease
-goto end
-
-:run
-python src/main.py
+lrelease translations/toolbox.zh_CN.ts
+copy /Y translations\toolbox.zh_CN.qm build\translations
+copy /Y %QTDIR%\translations\qt_zh_CN.qm build\translations\
 goto end
 
 :help
-ECHO build.cmd codegen - Generate code for .qrc
-ECHO build.cmd clean - Clean build directory
-ECHO build.cmd build (debug or release) - Build exe file
-ECHO build.cmd rebuild (debug or release) - Reuild exe file
-ECHO build.cmd lupdate - Create or update translation files
-ECHO build.cmd lrelease - Generate .qm files
-ECHO build.cmd run - Run application
+echo build.cmd build (debug or release) - Build projects incremental
+echo build.cmd rebuild (debug or release) - Clean and rebuild projects
+echo build.cmd lupdate - Run lupdate to output translation files
+echo build.cmd lrelease (debug or release) - Run lrelease to generate .qm file and copy to dist directory
+echo build.cmd clean - Clean directory
 goto end
 
 :end
-

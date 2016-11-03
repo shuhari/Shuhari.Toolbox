@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC>
+  <qresource>
+    <file alias="toolbox">toolbox.ico</file>
+  </qresource>
+</RCC>
