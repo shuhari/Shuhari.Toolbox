@@ -7,5 +7,7 @@
     <file alias="encode">encode.png</file>
     <file alias="renamer">renamer.png</file>
     <file alias="servman">servman.png</file>
+    <file alias="directory">directory.png</file>
+    <file alias="clean">clean.png</file>
   </qresource>
 </RCC>

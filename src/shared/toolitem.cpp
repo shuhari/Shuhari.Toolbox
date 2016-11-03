@@ -10,6 +10,7 @@ ToolItem::ToolItem(const QString &id, const QString &name, const QString &iconNa
     _icon = QIcon(iconName);
     _tooltip = tooltip;
     _fn = fn;
+    _window = nullptr;
 }
 
 

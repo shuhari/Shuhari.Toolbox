@@ -13,6 +13,8 @@ SOURCES += main.cpp \
            shared/toolitem.cpp \
            shared/toolmodel.cpp \
            shared/toolwindow.cpp \
+           shared/diredit.cpp \
+           shared/loglist.cpp \
            center/centerwindow.cpp \
            bookman/bookmanwindow.cpp \
            cleandir/cleandirwindow.cpp \
@@ -27,6 +29,8 @@ HEADERS += precompiled.h \
            shared/toolitem.h \
            shared/toolmodel.h \
            shared/toolwindow.h \
+           shared/diredit.h \
+           shared/loglist.h \
            center/centerwindow.h \
            bookman/bookmanwindow.h \
            cleandir/cleandirwindow.h \
