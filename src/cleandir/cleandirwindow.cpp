@@ -11,7 +11,7 @@ CleanDirWindow::CleanDirWindow()
 ToolItem* CleanDirWindow::define() {
     return new ToolItem("cleandir",
                         strings::cleandir_name(),
-                        ":/clean",
+                        ":/cleandir",
                         strings::cleandir_tooltip(),
                         []() { return new CleanDirWindow(); });
 }

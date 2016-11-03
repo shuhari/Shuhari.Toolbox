@@ -2,6 +2,10 @@
 <RCC>
   <qresource>
     <file alias="toolbox">toolbox.ico</file>
-    <file alias="clean">clean.png</file>
+    <file alias="bookman">bookman.png</file>
+    <file alias="cleandir">cleandir.png</file>
+    <file alias="encode">encode.png</file>
+    <file alias="renamer">renamer.png</file>
+    <file alias="servman">servman.png</file>
   </qresource>
 </RCC>

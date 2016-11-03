@@ -14,7 +14,11 @@ SOURCES += main.cpp \
            shared/toolmodel.cpp \
            shared/toolwindow.cpp \
            center/centerwindow.cpp \
+           bookman/bookmanwindow.cpp \
            cleandir/cleandirwindow.cpp \
+           encode/encodewindow.cpp \
+           renamer/renamerwindow.cpp \
+           servman/servmanwindow.cpp \
 
 HEADERS += precompiled.h \
            resources.h \
@@ -24,7 +28,11 @@ HEADERS += precompiled.h \
            shared/toolmodel.h \
            shared/toolwindow.h \
            center/centerwindow.h \
+           bookman/bookmanwindow.h \
            cleandir/cleandirwindow.h \
+           encode/encodewindow.h \
+           renamer/renamerwindow.h \
+           servman/servmanwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc

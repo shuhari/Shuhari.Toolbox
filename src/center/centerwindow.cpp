@@ -3,6 +3,10 @@
 #include "resources.h"
 #include "shared/common.h"
 #include "cleandir/cleandirwindow.h"
+#include "bookman/bookmanwindow.h"
+#include "encode/encodewindow.h"
+#include "renamer/renamerwindow.h"
+#include "servman/servmanwindow.h"
 
 
 CenterWindow::CenterWindow()
@@ -33,33 +37,11 @@ void CenterWindow::createChildren() {
 void CenterWindow::loadItems() {
     _itemModel = new ToolModel(this);
     _itemModel->add(CleanDirWindow::define());
+    _itemModel->add(BookManageWindow::define());
+    _itemModel->add(EncodeWindow::define());
+    _itemModel->add(RenamerWindow::define());
+    _itemModel->add(ServiceManageWindow::define());
     _itemList->setModel(_itemModel);
-    /*
-    _itemModel.add(new ToolItem("cleandir",
-                                ":/clean",
-                                strings::cleandir_name(),
-                                strings::cleandir_tooltip(),
-                                []() { return new CleanDirWindow(); }));
-    _itemModel.add(new ToolItem("bookman",
-                                ":/book",
-                                strings::bookman_name(),
-                                strings::bookman_tooltip(),
-                                []() { return new BookManageWindow(); }));
-    _itemModel.add(new ToolItem("encdec",
-                                ":/encode",
-                                strings::encdec_name(),
-                                strings::encdec_tooltip(),
-                                []() { return new EncodeDecodeWindow(); }));
-    _itemModel.add(new ToolItem("renamer",
-                                ":/rename",
-                                strings::renamer_name(),
-                                strings::renamer_tooltip(),
-                                []() { return new RenamerWindow(); }));
-    _itemModel.add(new ToolItem("servman",
-                                ":/service",
-                                strings::servman_name(),
-                                strings::servman_tooltip(),
-                                []() { return new ServiceManageWindow(); }));*/
 }
 
 
