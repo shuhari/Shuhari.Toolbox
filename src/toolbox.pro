@@ -8,8 +8,13 @@ PRECOMPILED_HEADER = precompiled.h
 INCLUDEPATH += .
 
 SOURCES += main.cpp \
+           app.cpp \
+           center/centerwindow.cpp \
 
 HEADERS += precompiled.h \
+           resources.h \
+           app.h \
+           center/centerwindow.h \
         
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc

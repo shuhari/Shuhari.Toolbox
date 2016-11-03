@@ -44,7 +44,7 @@ goto end
 :lrelease
 lrelease translations/toolbox.zh_CN.ts
 copy /Y translations\toolbox.zh_CN.qm build\translations
-copy /Y %QTDIR%\translations\qt_zh_CN.qm build\translations\
+copy /Y %QTDIR%\translations\qt_zh_CN.qm build\translations\qt.zh_CN.qm
 goto end
 
 :help
