@@ -12,12 +12,12 @@ public:
     // if warn=true and input directory is invalid then raise warning message
     // return valid directory or empty
     QString currentDir(bool warn = false);
+    void    setDir(const QString& dir);
 
 private:
     QLineEdit*       _edit;
     QPushButton*     _browseBtn;
 
-    void             setDir(const QString& dir);
 
 private slots:
     void             on_browse();

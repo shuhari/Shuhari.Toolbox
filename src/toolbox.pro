@@ -15,9 +15,12 @@ SOURCES += main.cpp \
            shared/toolwindow.cpp \
            shared/diredit.cpp \
            shared/loglist.cpp \
+           shared/baseconfig.cpp \
            center/centerwindow.cpp \
            bookman/bookmanwindow.cpp \
            cleandir/cleandirwindow.cpp \
+           cleandir/cleandirconfig.cpp \
+           cleandir/cleanthread.cpp \
            encode/encodewindow.cpp \
            renamer/renamerwindow.cpp \
            servman/servmanwindow.cpp \
@@ -31,9 +34,12 @@ HEADERS += precompiled.h \
            shared/toolwindow.h \
            shared/diredit.h \
            shared/loglist.h \
+           shared/baseconfig.h \
            center/centerwindow.h \
            bookman/bookmanwindow.h \
            cleandir/cleandirwindow.h \
+           cleandir/cleandirconfig.h \
+           cleandir/cleanthread.h \
            encode/encodewindow.h \
            renamer/renamerwindow.h \
            servman/servmanwindow.h \

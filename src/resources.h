@@ -5,9 +5,13 @@
 
 namespace strings {
     inline QString toolbox()          { return qApp->translate("common", "Shuhari's toolbox"); }
+    inline QString copy()             { return qApp->translate("common", "Copy"); }
+    inline QString clear()            { return qApp->translate("common", "Clear"); }
 
-    inline QString warning()          { return qApp->translate("diagnostic", "Warning"); }
+    inline QString debug()            { return qApp->translate("diagnostic", "Debug"); }
+    inline QString error()            { return qApp->translate("diagnostic", "Error"); }
     inline QString info()             { return qApp->translate("diagnostic", "Information"); }
+    inline QString warning()          { return qApp->translate("diagnostic", "Warning"); }
 
     inline QString browse_label()     { return qApp->translate("browse", "Directory"); }
     inline QString browse_title()     { return qApp->translate("browse", "Bowse for directory"); }
@@ -30,5 +34,9 @@ namespace strings {
     inline QString servman_tooltip()  { return qApp->translate("servman", "Manage system services"); }
 
     inline QString prompt_invalid_directory()     { return qApp->translate("prompt", "The selected directory is invalid."); }
+    inline QString prompt_processing_directory()  { return qApp->translate("prompt", "Processing directory: %1"); }
+    inline QString prompt_process_finished()      { return qApp->translate("prompt", "Process finished"); }
+    inline QString prompt_delete_success()        { return qApp->translate("prompt", "Delete file/directory [%1] success"); }
+    inline QString prompt_delete_failed()         { return qApp->translate("prompt", "Delete file/directory [%1] failed: %2"); }
 };
 

@@ -8,6 +8,11 @@
 #include <QFile>
 #include <QDebug>
 #include <QStandardPaths>
+#include <QDate>
+#include <QTime>
+#include <QDateTime>
+#include <QVariant>
+#include <QClipboard>
 #include <QIcon>
 #include <QWidget>
 #include <QMainWindow>
@@ -15,6 +20,8 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QListView>
+#include <QAction>
+#include <QACtionGroup>
 #include <QMessageBox>
 #include <QAbstractListModel>
 #include <QAbstractTableModel>
@@ -23,5 +30,6 @@
 #include <QGridLayout>
 #include <QCloseEvent>
 #include <QFileDialog>
+#include <QThread>
 
 #endif // __PRECOMPILED_H__

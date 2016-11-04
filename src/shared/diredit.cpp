@@ -12,6 +12,7 @@ DirectoryEdit::DirectoryEdit(QWidget *parent)
     _browseBtn->setToolTip(strings::browse_tooltip());
 
     auto hbox = new QHBoxLayout();
+    hbox->setContentsMargins(0, 0, 0, 0);
     hbox->addWidget(_edit, 1);
     hbox->addWidget(_browseBtn);
     setLayout(hbox);

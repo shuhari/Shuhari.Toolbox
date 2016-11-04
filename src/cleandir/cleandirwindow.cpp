@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "cleandirwindow.h"
 #include "resources.h"
+#include "app.h"
 
 
 CleanDirWindow::CleanDirWindow()
@@ -40,23 +41,38 @@ void CleanDirWindow::createChildren() {
 
 
 void CleanDirWindow::loadConfig() {
+    _config = new CleanDirConfig(tool()->id(), this);
+    _config->load(appSettings());
 
+    _dirEdit->setDir(_config->directory());
 }
 
 
 void CleanDirWindow::saveConfig() {
+    _config->setDirectory(_dirEdit->currentDir());
 
+    _config->save(appSettings());
 }
 
 
 void CleanDirWindow::on_clean() {
-
+    auto dir = _dirEdit->currentDir(true);
+    if (!dir.isEmpty()) {
+        showRunning(true);
+        _logList->clear();
+        auto thread = new CleanThread(dir, this);
+        connect(thread, &CleanThread::finished, this, &CleanDirWindow::on_thread_finished);
+        connect(thread, &CleanThread::log, _logList, &LogList::log);
+        thread->start();
+    }
 }
 
 
 void CleanDirWindow::on_thread_finished() {
-
+    showRunning(false);
+    _logList->info(strings::prompt_process_finished());
 }
+
 
 void CleanDirWindow::showRunning(bool running) {
     _cleanBtn->setEnabled(!running);
