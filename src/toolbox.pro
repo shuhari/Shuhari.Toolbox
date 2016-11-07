@@ -18,6 +18,9 @@ SOURCES += main.cpp \
            shared/baseconfig.cpp \
            center/centerwindow.cpp \
            bookman/bookmanwindow.cpp \
+           bookman/bookmanconfig.cpp \
+           bookman/processthread.cpp \
+           bookman/rarcommand.cpp \
            cleandir/cleandirwindow.cpp \
            cleandir/cleandirconfig.cpp \
            cleandir/cleanthread.cpp \
@@ -37,6 +40,10 @@ HEADERS += precompiled.h \
            shared/baseconfig.h \
            center/centerwindow.h \
            bookman/bookmanwindow.h \
+           bookman/bookmanwindow.h \
+           bookman/bookmanconfig.h \
+           bookman/processthread.h \
+           bookman/rarcommand.h \
            cleandir/cleandirwindow.h \
            cleandir/cleandirconfig.h \
            cleandir/cleanthread.h \

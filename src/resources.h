@@ -7,6 +7,7 @@ namespace strings {
     inline QString toolbox()          { return qApp->translate("common", "Shuhari's toolbox"); }
     inline QString copy()             { return qApp->translate("common", "Copy"); }
     inline QString clear()            { return qApp->translate("common", "Clear"); }
+    inline QString process()          { return qApp->translate("common", "Process"); }
 
     inline QString debug()            { return qApp->translate("diagnostic", "Debug"); }
     inline QString error()            { return qApp->translate("diagnostic", "Error"); }
@@ -38,5 +39,9 @@ namespace strings {
     inline QString prompt_process_finished()      { return qApp->translate("prompt", "Process finished"); }
     inline QString prompt_delete_success()        { return qApp->translate("prompt", "Delete file/directory [%1] success"); }
     inline QString prompt_delete_failed()         { return qApp->translate("prompt", "Delete file/directory [%1] failed: %2"); }
+    inline QString prompt_decompress_success()    { return qApp->translate("prompt", "Decompress [%1] success"); }
+    inline QString prompt_decompress_failed()     { return qApp->translate("prompt", "Decompress [%1] failed"); }
+    inline QString prompt_rename_success()        { return qApp->translate("prompt", "Rename [%1] => [%2] success"); }
+    inline QString prompt_rename_failed()         { return qApp->translate("prompt", "Rename [%1] => [%2] failed"); }
 };
 
