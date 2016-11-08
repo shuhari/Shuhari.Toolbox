@@ -25,6 +25,7 @@ SOURCES += main.cpp \
            cleandir/cleandirconfig.cpp \
            cleandir/cleanthread.cpp \
            encode/encodewindow.cpp \
+           encode/encodes.cpp \
            renamer/renamerwindow.cpp \
            servman/servmanwindow.cpp \
 
@@ -48,6 +49,7 @@ HEADERS += precompiled.h \
            cleandir/cleandirconfig.h \
            cleandir/cleanthread.h \
            encode/encodewindow.h \
+           encode/encodes.h \
            renamer/renamerwindow.h \
            servman/servmanwindow.h \
 
