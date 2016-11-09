@@ -24,6 +24,14 @@ namespace strings {
     inline QString revert()           { return qApp->translate("common", "Revert"); }
     inline QString find()             { return qApp->translate("common", "Find"); }
     inline QString apply()            { return qApp->translate("common", "Apply"); }
+    inline QString refresh()          { return qApp->translate("common", "Refresh"); }
+    inline QString unknown()          { return qApp->translate("common", "Unknown"); }
+    inline QString name()             { return qApp->translate("common", "Name"); }
+    inline QString displayName()      { return qApp->translate("common", "Display Name"); }
+    inline QString description()      { return qApp->translate("common", "Description"); }
+    inline QString startType()        { return qApp->translate("common", "Start Type"); }
+    inline QString loginAs()          { return qApp->translate("common", "Login As"); }
+    inline QString status()           { return qApp->translate("common", "Status"); }
 
     inline QString debug()            { return qApp->translate("diagnostic", "Debug"); }
     inline QString error()            { return qApp->translate("diagnostic", "Error"); }
@@ -58,6 +66,27 @@ namespace strings {
 
     inline QString servman_name()     { return qApp->translate("servman", "Service Management"); }
     inline QString servman_tooltip()  { return qApp->translate("servman", "Manage system services"); }
+    inline QString servman_start()    { return qApp->translate("servman", "Start"); }
+    inline QString servman_stop()     { return qApp->translate("servman", "Stop"); }
+    inline QString servman_pause()     { return qApp->translate("servman", "Pause"); }
+    inline QString servman_autoStart()      { return qApp->translate("servman", "Automatic"); }
+    inline QString servman_demandStart()    { return qApp->translate("servman", "Demand"); }
+    inline QString servman_disabled()       { return qApp->translate("servman", "Disabled"); }
+    inline QString servman_type_fs()        { return qApp->translate("servman", "FS Driver"); }
+    inline QString servman_type_kernel()        { return qApp->translate("servman", "Kernel Driver"); }
+    inline QString servman_type_win32own()      { return qApp->translate("servman", "Win32 Own Process"); }
+    inline QString servman_type_win32share()    { return qApp->translate("servman", "Win32 Share Process"); }
+    inline QString servman_startType_auto()    { return qApp->translate("servman", "Automatic"); }
+    inline QString servman_startType_boot()    { return qApp->translate("servman", "Boot"); }
+    inline QString servman_startType_demand()  { return qApp->translate("servman", "Demand"); }
+    inline QString servman_startType_disabled() { return qApp->translate("servman", "Disabled"); }
+    inline QString servman_startType_sys() { return qApp->translate("servman", "System"); }
+    inline QString servman_state_continuePending() { return qApp->translate("servman", "Continue Pending"); }
+    inline QString servman_state_pausePending() { return qApp->translate("servman", "Pause Pending"); }
+    inline QString servman_state_stopped() { return qApp->translate("servman", "Stopped"); }
+    inline QString servman_state_running() { return qApp->translate("servman", "Running"); }
+    inline QString servman_state_startPending() { return qApp->translate("servman", "Start Pending"); }
+    inline QString servman_state_paused() { return qApp->translate("servman", "Paused"); }
 
     inline QString prompt_invalid_directory()     { return qApp->translate("prompt", "The selected directory is invalid."); }
     inline QString prompt_processing_directory()  { return qApp->translate("prompt", "Processing directory: %1"); }
@@ -70,5 +99,8 @@ namespace strings {
     inline QString prompt_rename_failed()         { return qApp->translate("prompt", "Rename [%1] => [%2] failed"); }
     inline QString prompt_invalid_originText()    { return qApp->translate("prompt", "Orign Text is invalid."); }
     inline QString prompt_invalid_target()        { return qApp->translate("prompt", "Target is invalid."); }
+    inline QString prompt_setStartType_failed()   { return qApp->translate("prompt", "Set StartType failed."); }
+    inline QString prompt_openManager_failed()    { return qApp->translate("prompt", "Open Service Manager failed."); }
+    inline QString prompt_openService_failed()    { return qApp->translate("prompt", "Open Service failed."); }
 };
 

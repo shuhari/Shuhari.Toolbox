@@ -27,6 +27,9 @@
 #include <QTreeView>
 #include <QHeaderView>
 #include <QTextEdit>
+#include <QTextBrowser>
+#include <QToolBar>
+#include <QStatusBar>
 #include <QComboBox>
 #include <QRadioButton>
 #include <QCheckBox>
