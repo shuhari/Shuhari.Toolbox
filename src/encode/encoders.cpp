@@ -27,6 +27,8 @@ QString Md5Encoder::encode(const QString &input, QTextCodec *codec) {
 }
 
 QString Md5Encoder::decode(const QString &input, QTextCodec *codec) {
+    Q_UNUSED(input);
+    Q_UNUSED(codec);
     return "<md5 decode: NO IMPL>";
 }
 

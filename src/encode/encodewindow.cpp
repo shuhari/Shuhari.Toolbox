@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "encodewindow.h"
 #include "resources.h"
+#include "shared/common.h"
 
 
 EncodeWindow::EncodeWindow()
@@ -23,7 +24,7 @@ ToolItem* EncodeWindow::define() {
 }
 
 
-void EncodeDecodeWindow::createChildren() {
+void EncodeWindow::createChildren() {
     auto inputLabel = new QLabel(strings::input());
     inputLabel->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     auto outputLabel = new QLabel(strings::output());
@@ -40,8 +41,8 @@ void EncodeDecodeWindow::createChildren() {
     _outputEdit->setPalette(palette);
     _typeCombo = new QComboBox();
     _codecCombo = new QComboBox();
-    _encodeRadio = new QRadioButton(strings::encode());
-    _decodeRadio = new QRadioButton(strings::decode());
+    _encodeRadio = new QRadioButton(strings::encode_encode());
+    _decodeRadio = new QRadioButton(strings::encode_decode());
     _encodeRadio->setChecked(true);
     auto swapBtn = new QPushButton(strings::swap());
 
@@ -79,24 +80,24 @@ void EncodeDecodeWindow::createChildren() {
     _codecCombo->setCurrentText("UTF-8");
 
     void (QComboBox::*comboIndexChanged)(int) = &QComboBox::currentIndexChanged;
-    connect(_inputEdit, &QTextEdit::textChanged, this, &EncodeDecodeWindow::updateOutput);
-    connect(_typeCombo, comboIndexChanged, this, &EncodeDecodeWindow::updateOutput);
-    connect(_codecCombo, comboIndexChanged, this, &EncodeDecodeWindow::updateOutput);
-    connect(_encodeRadio, &QRadioButton::toggled, this, &EncodeDecodeWindow::updateOutput);
-    connect(_decodeRadio, &QRadioButton::toggled, this, &EncodeDecodeWindow::updateOutput);
-    connect(swapBtn, &QPushButton::clicked, this, &EncodeDecodeWindow::on_swap);
+    connect(_inputEdit, &QTextEdit::textChanged, this, &EncodeWindow::updateOutput);
+    connect(_typeCombo, comboIndexChanged, this, &EncodeWindow::updateOutput);
+    connect(_codecCombo, comboIndexChanged, this, &EncodeWindow::updateOutput);
+    connect(_encodeRadio, &QRadioButton::toggled, this, &EncodeWindow::updateOutput);
+    connect(_decodeRadio, &QRadioButton::toggled, this, &EncodeWindow::updateOutput);
+    connect(swapBtn, &QPushButton::clicked, this, &EncodeWindow::on_swap);
 
     updateOutput();
 }
 
 
-void EncodeDecodeWindow::addEncoder(Encoder *encoder, const QString &name) {
+void EncodeWindow::addEncoder(Encoder *encoder, const QString &name) {
     encoder->setName(name);
     _typeCombo->addItem(encoder->name(), varFromPointer(encoder));
 }
 
 
-void EncodeDecodeWindow::updateOutput()
+void EncodeWindow::updateOutput()
 {
     auto encoder = (Encoder*)varToPointer(_typeCombo->currentData());
     auto codecName = _codecCombo->currentText();
@@ -114,7 +115,7 @@ void EncodeDecodeWindow::updateOutput()
 }
 
 
-void EncodeDecodeWindow::on_swap()
+void EncodeWindow::on_swap()
 {
     auto input = _inputEdit->toPlainText().trimmed();
     auto output = _outputEdit->toPlainText().trimmed();

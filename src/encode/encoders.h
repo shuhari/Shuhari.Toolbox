@@ -9,7 +9,7 @@ public:
     virtual ~Encoder();
 
     inline QString name() const              { return _name; }
-    inline void setName(const QString& name) { _name = value; }
+    inline void setName(const QString& name) { _name = name; }
 
     inline virtual bool supportEncode()      { return true; }
     inline virtual bool supportDecode()      { return true; }
@@ -44,6 +44,7 @@ public:
 
 class HtmlEncoder : public Encoder {
 public:
+    HtmlEncoder();
     virtual QString encode(const QString& input, QTextCodec* codec);
     virtual QString decode(const QString& input, QTextCodec* codec);
 

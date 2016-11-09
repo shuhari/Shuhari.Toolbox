@@ -12,6 +12,8 @@
 #include <QTime>
 #include <QDateTime>
 #include <QVariant>
+#include <QTextCodec>
+#include <QCryptographicHash>
 #include <QClipboard>
 #include <QIcon>
 #include <QWidget>
@@ -20,6 +22,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QListView>
+#include <QTextEdit>
+#include <QComboBox>
+#include <QRadioButton>
 #include <QAction>
 #include <QACtionGroup>
 #include <QMessageBox>

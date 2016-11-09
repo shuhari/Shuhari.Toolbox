@@ -4,6 +4,7 @@
 #include "precompiled.h"
 #include "shared/toolitem.h"
 #include "shared/toolwindow.h"
+#include "encoders.h"
 
 
 class EncodeWindow : public ToolWindow {

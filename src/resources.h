@@ -8,6 +8,12 @@ namespace strings {
     inline QString copy()             { return qApp->translate("common", "Copy"); }
     inline QString clear()            { return qApp->translate("common", "Clear"); }
     inline QString process()          { return qApp->translate("common", "Process"); }
+    inline QString type()             { return qApp->translate("common", "Type"); }
+    inline QString direction()        { return qApp->translate("common", "Direction"); }
+    inline QString input()            { return qApp->translate("common", "Input"); }
+    inline QString output()           { return qApp->translate("common", "Output"); }
+    inline QString codec()            { return qApp->translate("common", "Codec"); }
+    inline QString swap()             { return qApp->translate("common", "Swap"); }
 
     inline QString debug()            { return qApp->translate("diagnostic", "Debug"); }
     inline QString error()            { return qApp->translate("diagnostic", "Error"); }
@@ -27,6 +33,8 @@ namespace strings {
 
     inline QString encode_name()      { return qApp->translate("encode", "Encode/Decode"); }
     inline QString encode_tooltip()   { return qApp->translate("encode", "Encode and decode"); }
+    inline QString encode_encode()    { return qApp->translate("encode", "Encode"); }
+    inline QString encode_decode()    { return qApp->translate("encode", "Decode"); }
 
     inline QString renamer_name()     { return qApp->translate("renamer", "File Renamer"); }
     inline QString renamer_tooltip()  { return qApp->translate("renamer", "Rename directories and files"); }
