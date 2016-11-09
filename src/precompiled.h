@@ -20,11 +20,17 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QPushButton>
+#include <QButtonGroup>
 #include <QLineEdit>
 #include <QListView>
+#include <QTableView>
+#include <QTreeView>
+#include <QHeaderView>
 #include <QTextEdit>
 #include <QComboBox>
 #include <QRadioButton>
+#include <QCheckBox>
+#include <QMenu>
 #include <QAction>
 #include <QACtionGroup>
 #include <QMessageBox>

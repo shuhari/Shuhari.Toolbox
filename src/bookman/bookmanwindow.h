@@ -29,7 +29,7 @@ private:
 
     void           showRunning(bool running);
 
-private:
+private slots:
     void           on_process();
     void           on_process_finished();
 };

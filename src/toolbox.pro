@@ -27,6 +27,10 @@ SOURCES += main.cpp \
            encode/encodewindow.cpp \
            encode/encoders.cpp \
            renamer/renamerwindow.cpp \
+           renamer/findthread.cpp \
+           renamer/renamerconfig.cpp \
+           renamer/renameritem.cpp \
+           renamer/renamermodel.cpp \
            servman/servmanwindow.cpp \
 
 HEADERS += precompiled.h \
@@ -41,7 +45,6 @@ HEADERS += precompiled.h \
            shared/baseconfig.h \
            center/centerwindow.h \
            bookman/bookmanwindow.h \
-           bookman/bookmanwindow.h \
            bookman/bookmanconfig.h \
            bookman/processthread.h \
            bookman/rarcommand.h \
@@ -51,6 +54,10 @@ HEADERS += precompiled.h \
            encode/encodewindow.h \
            encode/encoders.h \
            renamer/renamerwindow.h \
+           renamer/findthread.h \
+           renamer/renamerconfig.h \
+           renamer/renameritem.h \
+           renamer/renamermodel.h \
            servman/servmanwindow.h \
 
 RESOURCES = ../resources/toolbox.qrc
