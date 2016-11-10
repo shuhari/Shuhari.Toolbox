@@ -38,8 +38,11 @@
 #include <QAction>
 #include <QACtionGroup>
 #include <QMessageBox>
+#include <QDockWidget>
+#include <QAbstractItemModel>
 #include <QAbstractListModel>
 #include <QAbstractTableModel>
+#include <QModelIndex>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>

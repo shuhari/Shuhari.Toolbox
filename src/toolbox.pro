@@ -36,6 +36,8 @@ SOURCES += main.cpp \
            servman/servicemodel.cpp \
            spaceeye/spaceeyewindow.cpp \
            spaceeye/spaceeyemodel.cpp \
+           spaceeye/spaceitem.cpp \
+           spaceeye/searchthread.cpp \
 
 HEADERS += precompiled.h \
            resources.h \
@@ -68,6 +70,8 @@ HEADERS += precompiled.h \
            servman/servicemodel.h \
            spaceeye/spaceeyewindow.h \
            spaceeye/spaceeyemodel.h \
+           spaceeye/spaceitem.h \
+           spaceeye/searchthread.h \
 
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc
