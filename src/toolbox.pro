@@ -45,6 +45,7 @@ HEADERS += precompiled.h \
            shared/diredit.h \
            shared/loglist.h \
            shared/baseconfig.h \
+           shared/basemodel.h \
            center/centerwindow.h \
            bookman/bookmanwindow.h \
            bookman/bookmanconfig.h \

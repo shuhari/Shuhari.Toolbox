@@ -2,6 +2,8 @@
 
 #include "precompiled.h"
 #include <windows.h>
+#include "shared/baseconfig.h"
+#include "shared/basemodel.h"
 
 
 class ServiceItem {
@@ -46,24 +48,15 @@ private:
 };
 
 
-class ServiceModel : public QAbstractTableModel {
+class ServiceModel : public BaseTableModel<ServiceItem> {
     Q_OBJECT
 public:
     ServiceModel(QObject* parent = nullptr);
-
-    ServiceItem* at(int row) const;
-    void clear();
-    int add(ServiceItem* item);
-    virtual int rowCount(const QModelIndex &parent) const;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
+    virtual QVariant cellData(int row, int column, int role, ServiceItem* item) const;
 
     void reload();
     void setStartType(const QString& name, DWORD startType);
 
 private:
-    QList<ServiceItem*> _items;
-
     bool shouldInclude(ENUM_SERVICE_STATUS_PROCESS* pService);
 };

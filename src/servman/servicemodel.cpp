@@ -71,36 +71,16 @@ QString ServiceItem::statusName()
 
 
 ServiceModel::ServiceModel(QObject *parent)
-    : QAbstractTableModel(parent) {
-
+    : BaseTableModel<ServiceItem>(parent) {
+    addColumn(strings::name());
+    addColumn(strings::displayName());
+    addColumn(strings::description());
+    addColumn(strings::type());
+    addColumn(strings::startType());
+    addColumn(strings::status());
+    addColumn(strings::loginAs());
 }
 
-
-int ServiceModel::rowCount(const QModelIndex &parent) const {
-    return _items.size();
-}
-
-ServiceItem* ServiceModel::at(int row) const {
-    Q_ASSERT(row >= 0 && row < _items.size());
-    return _items.at(row);
-}
-
-void ServiceModel::clear() {
-    int count = _items.size();
-    if (count > 0) {
-        beginRemoveRows(QModelIndex(), 0, count - 1);
-        qDeleteAll(_items);
-        _items.clear();
-        endRemoveRows();
-    }
-}
-
-int ServiceModel::add(ServiceItem *item) {
-    int row = _items.size();
-    beginInsertRows(QModelIndex(), row, row);
-    _items.append(item);
-    endInsertRows();
-}
 
 void ServiceModel::setStartType(const QString &name, DWORD startType) {
     for (int i=0; i<_items.size(); i++) {
@@ -174,47 +154,18 @@ void ServiceModel::reload() {
 }
 
 
-int ServiceModel::columnCount(const QModelIndex &parent) const {
-    Q_UNUSED(parent);
-    return COLUMN_COUNT;
-}
-
-
-QVariant ServiceModel::data(const QModelIndex &index, int role) const {
-    int row = index.row();
-    if (row >= 0 && row < _items.size()) {
-        ServiceItem* item = at(row);
-        if (role == Qt::DisplayRole) {
-            switch (index.column()) {
-            case COLUMN_NAME: return item->name();
+QVariant ServiceModel::cellData(int row, int column, int role, ServiceItem* item) const {
+    if (role == Qt::DisplayRole) {
+        switch (column) {
+            case COLUMN_NAME:        return item->name();
             case COLUMN_DISPLAYNAME: return item->displayName();
-            case COLUMN_DESCRIPTON: return item->description();
-            case COLUMN_TYPE: return item->typeName();
-            case COLUMN_STARTTYPE: return item->startTypeName();
-            case COLUMN_STATUS: return item->statusName();
-            case COLUMN_LOGIN: return item->startName();
-            }
-        }
-        else if (role == Qt::DecorationRole && index.column() == 0) {
-        }
-        else if (role == Qt::BackgroundColorRole) {
+            case COLUMN_DESCRIPTON:  return item->description();
+            case COLUMN_TYPE:        return item->typeName();
+            case COLUMN_STARTTYPE:   return item->startTypeName();
+            case COLUMN_STATUS:      return item->statusName();
+            case COLUMN_LOGIN:       return item->startName();
         }
     }
     return QVariant();
 }
 
-
-QVariant ServiceModel::headerData(int section, Qt::Orientation orientation, int role) const {
-    if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
-        switch (section) {
-        case COLUMN_NAME:           return strings::name();
-        case COLUMN_DISPLAYNAME:    return strings::displayName();
-        case COLUMN_DESCRIPTON:     return strings::description();
-        case COLUMN_TYPE:           return strings::type();
-        case COLUMN_STARTTYPE:      return strings::startType();
-        case COLUMN_STATUS:         return strings::status();
-        case COLUMN_LOGIN:          return strings::loginAs();
-        }
-    }
-    return QVariant();
-}

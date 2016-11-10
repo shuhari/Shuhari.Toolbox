@@ -13,6 +13,7 @@
 #include <QDateTime>
 #include <QVariant>
 #include <QTextCodec>
+#include <QList>
 #include <QCryptographicHash>
 #include <QClipboard>
 #include <QIcon>
