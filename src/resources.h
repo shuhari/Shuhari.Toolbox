@@ -102,5 +102,8 @@ namespace strings {
     inline QString prompt_setStartType_failed()   { return qApp->translate("prompt", "Set StartType failed."); }
     inline QString prompt_openManager_failed()    { return qApp->translate("prompt", "Open Service Manager failed."); }
     inline QString prompt_openService_failed()    { return qApp->translate("prompt", "Open Service failed."); }
+
+    inline QString spaceeye_name()    { return qApp->translate("spaceeye", "Space Eye"); }
+    inline QString spaceeye_tooltip() { return qApp->translate("spaceeye", "Look disk space usage"); }
 };
 

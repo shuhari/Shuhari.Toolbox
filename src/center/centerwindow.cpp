@@ -7,6 +7,7 @@
 #include "encode/encodewindow.h"
 #include "renamer/renamerwindow.h"
 #include "servman/servmanwindow.h"
+#include "spaceeye/spaceeyewindow.h"
 
 
 CenterWindow::CenterWindow()
@@ -41,6 +42,7 @@ void CenterWindow::loadItems() {
     _itemModel->add(EncodeWindow::define());
     _itemModel->add(RenamerWindow::define());
     _itemModel->add(ServiceManageWindow::define());
+    _itemModel->add(SpaceEyeWindow::define());
     _itemList->setModel(_itemModel);
 }
 

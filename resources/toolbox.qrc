@@ -9,5 +9,6 @@
     <file alias="servman">servman.png</file>
     <file alias="directory">directory.png</file>
     <file alias="clean">clean.png</file>
+    <file alias="spaceeye">spaceeye.png</file>
   </qresource>
 </RCC>
