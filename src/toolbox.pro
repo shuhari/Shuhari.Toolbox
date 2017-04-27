@@ -76,11 +76,11 @@ HEADERS += precompiled.h \
 RESOURCES = ../resources/toolbox.qrc
 RC_FILE = ../resources/toolbox.rc
 
-TRANSLATIONS += ../translations/toolbox.zh_CN.ts \ 
+TRANSLATIONS += ../translations/toolbox.zh_CN.ts \
 
 win32 {
     QT += winextras
-    LIBS += libversion
+    LIBS += -ladvapi32
 }
 
 CONFIG(debug, debug|release) {

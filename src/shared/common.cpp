@@ -1,3 +1,6 @@
+#include "precompiled.h"
+#include "common.h"
+
 union PointerUnion
 {
     qint64       value;
@@ -14,6 +17,6 @@ QVariant varFromPointer(void* ptr) {
 
 void* varToPointer(QVariant v) {
     PointerUnion pu;
-    pu.value = v.toInt();
+    pu.value = v.toLongLong();
     return pu.pointer;
 }

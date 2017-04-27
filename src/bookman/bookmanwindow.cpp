@@ -68,7 +68,7 @@ void BookManageWindow::on_process() {
         _logList->clear();
         auto thread = new ProcessThread(dirName, this);
         connect(thread, &ProcessThread::finished, this, &BookManageWindow::on_process_finished);
-        connect(thread, &ProcessThread::log, _logList, LogList::log);
+        connect(thread, &ProcessThread::log, _logList, &LogList::log);
         thread->start();
     }
 }

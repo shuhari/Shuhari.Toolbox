@@ -2,7 +2,7 @@
 SET NEXT_STEP=
 SET BUILD=%2
 IF "%BUILD%" == "" (SET BUILD=debug)
-
+SET MAKE=nmake
 
 ECHO Initialize...
 if not exist build mkdir build
@@ -30,11 +30,11 @@ goto clean
 :build
 cd build
 del /Q Makefile*.*
-del /Q uic_wrapper.bat
+REM del /Q uic_wrapper.bat
 qmake ../src/toolbox.pro
-mingw32-make %BUILD%
+%MAKE% %BUILD%
 del /Q Makefile*.*
-del /Q uic_wrapper.bat
+REM del /Q uic_wrapper.bat
 cd ..
 goto end
 
